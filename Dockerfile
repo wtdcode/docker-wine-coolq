@@ -21,6 +21,9 @@ RUN chown root:root /tmp && \
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
+    wget -O /tmp/gecko.tar.gz http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.tar.bz2 && \
+    mkdir -p /usr/share/wine/gecko && \
+    tar xf /tmp/gecko.tar.gz -C /usr/share/wine/gecko && \
     apt-get purge -y software-properties-common apt-transport-https && \
     apt-get autoremove -y && \
     apt-get clean && \
