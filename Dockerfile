@@ -16,6 +16,8 @@ RUN chown root:root /tmp && \
     apt-get install -y \
         cabextract unzip python-numpy \
         language-pack-zh-hans tzdata fontconfig && \
+    apt-get install -y --no-install-recommends \
+        fcitx fcitx-ui-classic fcitx-pinyin && \
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
