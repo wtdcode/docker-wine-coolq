@@ -10,6 +10,7 @@ RUN chown root:root /tmp && \
     apt-get install -y wget software-properties-common apt-transport-https && \
     wget -O- -nc https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
+    add-apt-repository -y ppa:cybermax-dexter/sdl2-backport && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y \
