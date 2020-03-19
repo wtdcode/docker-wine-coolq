@@ -15,7 +15,7 @@ RUN chown root:root /tmp && \
     apt-get install -y \
         cabextract unzip python-numpy \
         language-pack-zh-hans tzdata fontconfig && \
-    apt-get install -y --allow-unauthenticated --install-recommends winehq-devel wine-gecko2.21:i386 && \
+    apt-get install -y --allow-unauthenticated --install-recommends winehq-devel wine-gecko wine-gecko:i386 && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
     apt-get purge -y software-properties-common apt-transport-https && \
