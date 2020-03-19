@@ -38,7 +38,7 @@ RUN chsh -s /bin/bash user && \
     mkdir -p /home/user/.wine/drive_c/windows/Fonts && \
     unzip /tmp/simsun.zip -d /home/user/.wine/drive_c/windows/Fonts && \
     mkdir -p /home/user/.fonts/ && \
-    ln -s /home/user/.wine/drive_c/windows/Fonts/simsun.ttc /home/user/.fonts/ &&
+    ln -s /home/user/.wine/drive_c/windows/Fonts/simsun.ttc /home/user/.fonts/ && \
     chown -R user:user /home/user && \
     su user -c 'fc-cache -v' && \
     mkdir /home/user/coolq && \
