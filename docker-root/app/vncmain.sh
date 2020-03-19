@@ -27,7 +27,6 @@ while true; do
     # 酷Q 退出后直接重启 wine，然后重开。
     # 因为酷Q 更新之类的会自己开回来，所以把整个 wine 干掉重启，比较靠谱
     echo "[CQDaemon] CoolQ exited. Killing wine ..."
-    sleep 1
     wine wineboot --kill
     wineserver -k9
     echo "[CQDaemon] CoolQ will start after 3 seconds ..."

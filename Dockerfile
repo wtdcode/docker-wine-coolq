@@ -2,15 +2,20 @@ FROM oott123/novnc:v0.2.2
 
 COPY ./docker-root /
 
-# 先安装增加wine软件源需要的包。安装完wine以后卸载它们。
-RUN apt-get update && apt-get install -y wget software-properties-common apt-transport-https && \
-    wget -O - -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
+# RUN sed -i 's#/archive.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
+
+RUN chown root:root /tmp && \
+    chmod 1777 /tmp && \
+    apt-get update && \
+    apt-get install -y wget software-properties-common apt-transport-https && \
+    wget -O- -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
     dpkg --add-architecture i386 && \
-    apt-get update && apt-get install -y \
+    apt-get update && \
+    apt-get install -y \
         cabextract unzip python-numpy \
-        language-pack-zh-hans tzdata ttf-wqy-microhei && \
-    apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
+        language-pack-zh-hans tzdata fontconfig && \
+    apt-get install -y --allow-unauthenticated --install-recommends winehq-devel wine-gecko2.21:i386 && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
     apt-get purge -y software-properties-common apt-transport-https && \
@@ -32,9 +37,12 @@ RUN chsh -s /bin/bash user && \
     wget https://dlsec.cqp.me/docker-simsun -O /tmp/simsun.zip && \
     mkdir -p /home/user/.wine/drive_c/windows/Fonts && \
     unzip /tmp/simsun.zip -d /home/user/.wine/drive_c/windows/Fonts && \
-    chown -R user:user /home/user/.wine && \
+    mkdir -p /home/user/.fonts/ && \
+    ln -s /home/user/.wine/drive_c/windows/Fonts/simsun.ttc /home/user/.fonts/ &&
+    chown -R user:user /home/user && \
+    su user -c 'fc-cache -v' && \
     mkdir /home/user/coolq && \
-    rm -rf /home/user/.cache /tmp/* /etc/wgetrc
+    rm -rf /home/user/.cache/winetricks /tmp/* /etc/wgetrc
 
 ENV LANG=zh_CN.UTF-8 \
     LC_ALL=zh_CN.UTF-8 \
