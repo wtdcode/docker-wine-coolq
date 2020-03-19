@@ -25,8 +25,6 @@ RUN chown root:root /tmp && \
 
 RUN chsh -s /bin/bash user && \
     su user -c 'WINEARCH=win32 /usr/bin/wine wineboot' && \
-    su user -c 'mkdir -p /home/user/.wine/drive_c/windows/Resources/Themes/luna/' && \
-    su user -c 'cp /tmp/luna.msstyles /home/user/.wine/drive_c/windows/Resources/Themes/luna/luna.msstyles' && \
     su user -c '/usr/bin/wine regedit.exe /s /tmp/coolq.reg' && \
     su user -c 'wineboot' && \
     echo 'quiet=on' > /etc/wgetrc && \
