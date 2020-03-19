@@ -8,7 +8,7 @@ RUN chown root:root /tmp && \
     chmod 1777 /tmp && \
     apt-get update && \
     apt-get install -y wget software-properties-common apt-transport-https && \
-    wget -O- -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
+    wget -O- -nc https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
     dpkg --add-architecture i386 && \
     apt-get update && \
