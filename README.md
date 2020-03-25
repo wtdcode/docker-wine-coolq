@@ -2,7 +2,9 @@
 
 ![Build](https://github.com/CoolQ/docker-wine-coolq/workflows/Build/badge.svg) [![GitHub release](https://img.shields.io/github/release/coolq/docker-wine-coolq.svg)](https://github.com/CoolQ/docker-wine-coolq/releases) ![GitHub](https://img.shields.io/github/license/coolq/docker-wine-coolq.svg) [![Docker pulls](https://img.shields.io/docker/pulls/coolq/wine-coolq.svg)](https://hub.docker.com/r/coolq/wine-coolq) ![Image Size](https://img.shields.io/microbadger/image-size/coolq/wine-coolq.svg)
 
-docker-wine-coolq 可以使你通过 Wine 在 Docker 容器中运行 酷Q Air 或 酷Q Pro。
+docker-wine-coolq 可以使你通过 Wine 在 Docker 容器中运行 酷Q Air 或 酷Q Pro。本项目仅对 x86_64 平台提供支持。
+
+![warning.png](https://i.loli.net/2020/03/25/nc6CL9m53pjJfeX.png)
 
 即使该 dockerfile 仓库使用 GPL 发布，其中下载的软件仍然遵循其最终用户使用许可协议，请确认同意协议后再进行下载使用。
 
@@ -21,6 +23,22 @@ docker run --rm -p 9000:9000 -v `pwd`:/home/user/coolq coolq/wine-coolq
 即可运行一个 wine-coolq 实例。运行后，访问 `http://你的IP:9000` 可以打开一个 VNC 页面，输入 `MAX8char` 作为密码后即可看到一个 酷Q Air 已经启动。
 
 酷Q 和其数据文件会保存在容器内的 `/home/user/coolq` 文件夹下，映射到主机上则为上述命令第二步创建的文件夹。调整 `-v` 的参数可以改变主机映射的路径。
+
+## 常用示例
+
+### 使用酷Q Pro
+
+```bash
+# 请先自行删除老的 coolq 目录
+mkdir coolq
+docker run --name=coolq -d -p 9000:9000 -v `pwd`/coolq:/home/user/coolq -e COOLQ_URL=http://dlsec.cqp.me/cqp-full coolq/wine-coolq
+```
+
+### 设置 VNC 密码
+
+```bash
+docker run --name=coolq -d -p 9000:9000 -v `pwd`/coolq:/home/user/coolq -e VNC_PASSWD=12345678 coolq/wine-coolq
+```
 
 ## 环境变量
 
