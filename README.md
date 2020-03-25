@@ -6,7 +6,7 @@ docker-wine-coolq 可以使你通过 Wine 在 Docker 容器中运行 酷Q Air �
 
 即使该 dockerfile 仓库使用 GPL 发布，其中下载的软件仍然遵循其最终用户使用许可协议，请确认同意协议后再进行下载使用。
 
-随着版本更新，wine 的 酷Q 并不保证总是可用。若你遇到不可用问题，在严格按照下述步骤执行后仍可复现，请 [提交 issue](https://github.com/CoolQ/docker-wine-coolq/issues/new) 或在 [社区](https://cqp.cc/b/issue) 反馈。
+随着版本更新，wine 的 酷Q 并不保证总是可用。若你遇到不可用问题，在严格按照下述步骤执行后仍可复现，请在 [社区](https://cqp.cc/b/issue) 反馈。
 
 ## 下载使用
 
