@@ -1,8 +1,11 @@
-FROM oott123/novnc:v0.3.0
+FROM oott123/novnc:latest
 
-COPY ./docker-root /
+COPY ./docker-root/tmp /tmp
+COPY ./docker-root/etc /etc
+COPY ./docker-root/usr /usr
 
-# RUN sed -i 's#/archive.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
+RUN sed -i 's#/archive.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
+RUN sed -i 's#/security.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
 
 RUN chown root:root /tmp && \
     chmod 1777 /tmp && \
@@ -45,12 +48,13 @@ RUN chsh -s /bin/bash user && \
     ln -s /home/user/.wine/drive_c/windows/Fonts/simsun.ttc /home/user/.fonts/ && \
     chown -R user:user /home/user && \
     su user -c 'fc-cache -v' && \
-    mkdir /home/user/coolq && \
+    mkdir /home/user/weiyun && \
     rm -rf /home/user/.cache/winetricks /tmp/* /etc/wgetrc
+
+COPY ./docker-root/app /app
 
 ENV LANG=zh_CN.UTF-8 \
     LC_ALL=zh_CN.UTF-8 \
-    TZ=Asia/Shanghai \
-    COOLQ_URL=http://dlsec.cqp.me/cqa-tuling
+    TZ=Asia/Shanghai
 
-VOLUME ["/home/user/coolq"]
+VOLUME ["/home/user/weiyun"]

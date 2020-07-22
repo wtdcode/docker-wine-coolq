@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv /bin/bash
+hasexe=$(find /home/user/.wine/drive_c/Program\ Files/Tencent -maxdepth 1 -type d -name 'WeiyunSync')
+if [ "$hasexe" != "" ] ; then
+    echo 'Weiyun already exists, skip download.'
+else
+    echo 'Downloading Weiyun ...'
+    wget $COOLQ_URL -O /home/user/weiyun_install.exe
+fi
