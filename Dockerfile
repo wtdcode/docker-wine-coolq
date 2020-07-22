@@ -4,8 +4,8 @@ COPY ./docker-root/tmp /tmp
 COPY ./docker-root/etc /etc
 COPY ./docker-root/usr /usr
 
-RUN sed -i 's#/archive.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
-RUN sed -i 's#/security.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
+#RUN sed -i 's#/archive.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
+#RUN sed -i 's#/security.ubuntu.com/#/mirrors.ustc.edu.cn/#g' /etc/apt/sources.list
 
 RUN chown root:root /tmp && \
     chmod 1777 /tmp && \
@@ -57,4 +57,4 @@ ENV LANG=zh_CN.UTF-8 \
     LC_ALL=zh_CN.UTF-8 \
     TZ=Asia/Shanghai
 
-VOLUME ["/home/user/weiyun"]
+VOLUME ["/home/user/.wine/drive_c/weiyun"]

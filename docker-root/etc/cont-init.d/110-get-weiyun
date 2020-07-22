@@ -4,5 +4,5 @@ if [ "$hasexe" != "" ] ; then
     echo 'Weiyun already exists, skip download.'
 else
     echo 'Downloading Weiyun ...'
-    wget $COOLQ_URL -O /home/user/weiyun_install.exe
+    wget $WEIYUN_URL -O /home/user/weiyun_install.exe
 fi
